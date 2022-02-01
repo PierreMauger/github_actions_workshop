@@ -1,0 +1,19 @@
+name: compilation
+on:
+  push:
+    branches:
+      [ master ]
+
+jobs:
+  compilation:
+    runs-on: ubuntu-20.04
+    container: epitechcontent/epitest-docker:devel
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Build project
+        run: make
+
+      - name:
+        run: ls my_hello
