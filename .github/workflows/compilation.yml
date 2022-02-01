@@ -2,7 +2,7 @@ name: compilation
 on:
   push:
     branches:
-      [ master ]
+      - master
 
 jobs:
   compilation:
@@ -15,5 +15,5 @@ jobs:
       - name: Build project
         run: make
 
-      - name:
+      - name: Check if binary exist
         run: ls my_hello

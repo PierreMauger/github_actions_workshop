@@ -1,19 +1,20 @@
-name: compilation
+name: Run tests
 on:
-  push:
-    branches:
-      [ master ]
+  workflow_run:
+    workflows: ["compilation"]
+    types:
+      - completed
 
 jobs:
-  compilation:
+  unit-tests:
     runs-on: ubuntu-20.04
     container: epitechcontent/epitest-docker:devel
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Build project
-        run: make
+      - name: Run the tests
+        run: make tests_run
 
-      - name:
-        run: ls my_hello
+      - name: Show the coverage
+        run: make coverage

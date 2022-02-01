@@ -9,7 +9,7 @@
 #include <string.h>
 #include "hello.h"
 
-int mn(int argc, char **argv)
+int main(int argc, char **argv)
 {
     if (argc > 1 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help"))) {
         printf("Usage: %s [NAME]\n", argv[0]);
