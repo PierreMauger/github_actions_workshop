@@ -1,0 +1,25 @@
+name: compilation
+on:
+  push:
+    branches:
+      [ master ]
+
+jobs:
+  compilation:
+    runs-on: Ubuntu 20.04
+    steps:
+      - name: Build Docker Image
+        run: docker build . --file Dockerfile
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Build project
+        run: make
+
+      - name:
+        run: |
+          FILE=my_hello
+          if [ -f "$FILE" ]; then
+            echo "$FILE exists."
+          fi
