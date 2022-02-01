@@ -1,20 +1,20 @@
-name: Run unit tests
+name: Run functional tests
 on:
   workflow_run:
-    workflows: ["compilation"]
+    workflows: ["unit-tests"]
     types:
       - completed
 
 jobs:
-  unit-tests:
+  functional-tests:
     runs-on: ubuntu-20.04
     container: epitechcontent/epitest-docker:devel
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Run the tests
-        run: make tests_run
+      - name: Build th project
+        run: make
 
-      - name: Show the coverage
-        run: make coverage
+      - name: Functional testing
+        run: ./test.sh
